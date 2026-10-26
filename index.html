@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ratul Das — Game, Web & Software Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070D22;--bg2:#0B1330;--sf:#101A3D;--sf2:#16234F;--line:#233569;--text:#E8EDFF;--muted:#94A3CE;--cy:#2DE2E6;--bl:#5B8CFF;--vi:#8B5CF6;--ok:#4ADE80}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;
+background-image:linear-gradient(rgba(91,140,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(91,140,255,.045) 1px,transparent 1px);background-size:44px 44px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cy);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem)}
+h1,h2,h3,.disp{font-family:'Chakra Petch',sans-serif}
+.cut{clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(7,13,34,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{height:66px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'Chakra Petch';font-weight:700;font-size:1.2rem;text-decoration:none;letter-spacing:.02em}
+.brand b{color:var(--cy);text-shadow:0 0 14px rgba(45,226,230,.6)}
+.links{display:flex;gap:1.75rem;list-style:none}
+.links a{text-decoration:none;color:var(--muted);font-weight:600;font-size:.92rem;transition:color .2s}
+.links a:hover{color:var(--cy)}
+.btn{display:inline-block;text-decoration:none;font-family:'Chakra Petch';font-weight:600;font-size:.95rem;letter-spacing:.03em;padding:.7rem 1.4rem;transition:box-shadow .2s,background .2s,border-color .2s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
+.btn-fill{background:var(--cy);color:#04122B}
+.btn-fill:hover{background:#6BF0F3;box-shadow:0 0 24px rgba(45,226,230,.5)}
+.btn-line{background:rgba(91,140,255,.12);color:var(--text);box-shadow:inset 0 0 0 1px var(--line)}
+.btn-line:hover{background:rgba(91,140,255,.24);box-shadow:inset 0 0 0 1px var(--bl)}
+
+.hero{background:radial-gradient(800px 460px at 85% 0%,rgba(139,92,246,.22),transparent 60%),radial-gradient(700px 420px at 0% 100%,rgba(45,226,230,.1),transparent 60%)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:3.5rem;align-items:center;padding-top:clamp(4rem,9vw,6.5rem);padding-bottom:clamp(4rem,9vw,6.5rem)}
+.status{display:inline-flex;align-items:center;gap:.6rem;font-size:.86rem;font-weight:600;color:var(--cy);border:1px solid rgba(45,226,230,.35);background:rgba(45,226,230,.07);padding:.4rem .95rem;margin-bottom:1.5rem}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--cy);box-shadow:0 0 10px var(--cy);animation:pl 1.6s ease-in-out infinite}
+@keyframes pl{50%{opacity:.3}}
+h1{font-size:clamp(2.5rem,5.4vw,4.3rem);line-height:1.04;font-weight:700;letter-spacing:-.01em;margin-bottom:1.3rem}
+h1 span{display:block;background:linear-gradient(90deg,var(--cy),var(--bl) 60%,var(--vi));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:1.07rem;max-width:31rem;margin-bottom:2.1rem}
+.btns{display:flex;gap:.8rem;flex-wrap:wrap}
+
+.hud{position:relative;background:linear-gradient(160deg,var(--sf2),var(--sf));padding:1.4rem 1.5rem 1.6rem;border:1px solid var(--line)}
+.hud-top{display:flex;justify-content:space-between;font-family:'Chakra Petch';font-size:.8rem;color:var(--muted);letter-spacing:.06em;margin-bottom:1rem}
+.hud-top b{color:var(--ok);font-weight:600}
+.orbit{position:relative;height:170px;margin:.2rem 0 1.1rem;display:grid;place-items:center}
+.orbit .ring{position:absolute;border:1px dashed rgba(91,140,255,.4);border-radius:50%}
+.orbit .r1{width:150px;height:150px;animation:sp 14s linear infinite}
+.orbit .r2{width:110px;height:110px;border-style:solid;border-color:rgba(45,226,230,.25);animation:sp 9s linear infinite reverse}
+.orbit .ring::after{content:"";position:absolute;top:-5px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--cy);box-shadow:0 0 12px var(--cy)}
+.planet{width:68px;height:68px;border-radius:50%;background:radial-gradient(circle at 32% 30%,#C9D4FF,#5B8CFF 45%,#1B2A66 80%);box-shadow:0 0 36px rgba(91,140,255,.55)}
+@keyframes sp{to{transform:rotate(360deg)}}
+.hud h3{font-size:1.15rem;font-weight:600;margin-bottom:.2rem}
+.hud p{color:var(--muted);font-size:.88rem}
+.bar{height:6px;background:var(--bg);margin-top:.9rem;overflow:hidden}
+.bar i{display:block;height:100%;width:60%;background:linear-gradient(90deg,var(--cy),var(--bl));box-shadow:0 0 12px rgba(45,226,230,.6)}
+
+.stats{background:rgba(11,19,48,.9);border-block:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-top:2rem;padding-bottom:2rem}
+.stat{text-align:center}
+.stat b{display:block;font-family:'Chakra Petch';font-size:2.3rem;font-weight:700;line-height:1.1;color:var(--text)}
+.stat b em{font-style:normal;color:var(--cy)}
+.stat small{color:var(--muted);font-size:.85rem}
+
+section{padding:clamp(3.5rem,7vw,5.5rem) 0}
+h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700;line-height:1.12;margin-bottom:.7rem}
+.sub{color:var(--muted);max-width:38rem;margin-bottom:2.5rem}
+.grid{display:grid;gap:1.25rem}
+.g3{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.gp{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.card{background:var(--sf);border:1px solid var(--line);padding:1.7rem;transition:border-color .25s,box-shadow .25s}
+.card:hover{border-color:var(--cy);box-shadow:0 0 28px rgba(45,226,230,.12)}
+.card h3{font-size:1.2rem;font-weight:600;margin-bottom:.5rem}
+.card p{color:var(--muted);font-size:.92rem}
+.track .ic{font-size:1.8rem;display:block;margin-bottom:.8rem}
+.track ul{list-style:none;margin-top:1rem;display:flex;flex-wrap:wrap;gap:.4rem}
+.track li,.pills span{font-size:.76rem;font-weight:600;background:var(--bg2);border:1px solid var(--line);padding:.2rem .6rem}
+.tag{display:inline-block;font-family:'Chakra Petch';font-size:.8rem;font-weight:600;color:var(--vi);background:rgba(139,92,246,.14);padding:.25rem .65rem;margin-bottom:1rem;letter-spacing:.03em}
+.tag.live{color:var(--cy);background:rgba(45,226,230,.1)}
+.proj{display:flex;flex-direction:column;justify-content:space-between}
+.proj.feat{grid-column:1/-1;background:linear-gradient(120deg,rgba(139,92,246,.2),var(--sf) 60%);border-color:rgba(139,92,246,.5)}
+.pills{display:flex;gap:.45rem;flex-wrap:wrap;margin:1.1rem 0 1.5rem}
+.row{display:flex;gap:.7rem;flex-wrap:wrap}
+.row .btn{padding:.55rem 1.1rem;font-size:.85rem}
+
+.dsec{background:var(--bg2);border-block:1px solid var(--line)}
+.svc .pr{display:inline-block;margin-top:.9rem;color:var(--cy);font-family:'Chakra Petch';font-weight:600;font-size:.88rem}
+.svc .ic{font-size:1.5rem;display:block;margin-bottom:.6rem}
+.svc h3{font-size:1.02rem}
+
+.sk-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem}
+.sk-g h3{font-size:1.05rem;margin-bottom:1rem;color:var(--cy)}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chips span{font-size:.84rem;font-weight:600;padding:.4rem .8rem;background:var(--bg2);border:1px solid var(--line);transition:border-color .2s,color .2s}
+.chips span:hover{border-color:var(--cy);color:var(--cy)}
+
+.split{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:center}
+.cert{background:linear-gradient(150deg,var(--sf2),var(--sf));border:1px solid var(--line);padding:2.5rem 2rem;text-align:center}
+.cert .m{font-size:3.4rem;display:block;margin-bottom:1rem}
+.cert h3{font-size:1.15rem;font-weight:600}
+.cert .org{color:var(--muted);font-size:.86rem;margin:.3rem 0 1.4rem}
+.kv{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.84rem}
+.kv:last-of-type{border:0;margin-bottom:1.3rem}
+.kv span{color:var(--muted)}.kv b{color:var(--cy)}
+.stamp{display:inline-block;color:var(--ok);background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.3);padding:.4rem 1.1rem;font-size:.8rem;font-weight:700}
+.why{display:flex;flex-direction:column;gap:1.4rem;margin-top:1.7rem}
+.why div{display:flex;gap:1rem}
+.why i{font-style:normal;width:44px;height:44px;flex-shrink:0;display:grid;place-items:center;font-size:1.2rem;background:var(--sf2);border:1px solid var(--line)}
+.why h4{font-family:'Chakra Petch';font-size:1.02rem;font-weight:600}
+.why p{color:var(--muted);font-size:.9rem}
+
+.cta{text-align:center;background:radial-gradient(600px 280px at 50% 0%,rgba(139,92,246,.28),transparent 70%),var(--bg2);border-top:1px solid var(--line)}
+.cta p{color:var(--muted);max-width:32rem;margin:0 auto 2rem}
+footer{border-top:1px solid var(--line);padding:1.6rem 0;text-align:center;color:var(--muted);font-size:.84rem}
+
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.links{display:none}.stats .wrap{grid-template-columns:repeat(2,1fr);row-gap:1.5rem}.split{grid-template-columns:1fr;gap:2.5rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a href="#" class="brand">RATUL<b>.DAS</b></a>
+  <ul class="links"><li><a href="#projects">Projects</a></li><li><a href="#what">What I do</a></li><li><a href="#skills">Skills</a></li></ul>
+  <a href="https://www.fiverr.com/ratul_shelby/buying?source=avatar_menu_profile" class="btn btn-fill" target="_blank" rel="noopener">Hire me on Fiverr</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="status"><i></i>Building a NASA Space Apps 2026 game</div>
+    <h1>I build games, web apps <span>and clean data.</span></h1>
+    <p class="lead">Game developer, full-stack web developer and data specialist. I make 3D experiences with Three.js, apps with React and Laravel, and deliver data work with 99%+ accuracy.</p>
+    <div class="btns">
+      <a href="#projects" class="btn btn-fill">View projects</a>
+      <a href="https://github.com/Ratul-007" class="btn btn-line" target="_blank" rel="noopener">GitHub profile</a>
+    </div>
+  </div>
+  <div class="hud cut" aria-hidden="true">
+    <div class="hud-top"><span>CURRENT MISSION</span><b>● IN DEVELOPMENT</b></div>
+    <div class="orbit"><div class="ring r1"></div><div class="ring r2"></div><div class="planet"></div></div>
+    <h3>AstroBase: Moon &amp; Mars Survival</h3>
+    <p>3D off-world base simulator for NASA Space Apps 2026.</p>
+    <div class="bar"><i></i></div>
+  </div>
+</div></header>
+
+<div class="stats"><div class="wrap">
+  <div class="stat"><b>4<em>+</em></b><small>Featured projects</small></div>
+  <div class="stat"><b>99<em>%</em></b><small>Data accuracy</small></div>
+  <div class="stat"><b>24<em>h</em></b><small>Average turnaround</small></div>
+  <div class="stat"><b>5<em>★</em></b><small>Client rating</small></div>
+</div></div>
+
+<section id="projects"><div class="wrap">
+  <h2>Featured projects</h2>
+  <p class="sub">A 3D game in progress, full-stack apps and machine learning work, each with code on GitHub.</p>
+  <div class="grid gp">
+    <article class="card proj feat cut">
+      <div>
+        <span class="tag live">NOW BUILDING · NASA SPACE APPS 2026</span>
+        <h3>AstroBase Moon &amp; Mars Simulator 🚀</h3>
+        <p>An interactive 3D game for the NASA Space Apps Challenge 2026. Manage resources, life support and astronaut survival strategy while running an outpost on the Moon or Mars.</p>
+        <div class="pills"><span>JavaScript</span><span>Three.js</span><span>3D graphics</span><span>Simulation</span></div>
+      </div>
+      <div class="row"><a href="https://github.com/Ratul-007/AstroBase-Moon-Mars-Survival-Simulator" target="_blank" rel="noopener" class="btn btn-fill">GitHub repo</a></div>
+    </article>
+    <article class="card proj cut">
+      <div>
+        <span class="tag">FULL-STACK APP</span>
+        <h3>GroceryGenius 🛒</h3>
+        <p>A grocery and meal planning app with live budget tracking, pantry expiry alerts and a cook mode that deducts ingredients automatically.</p>
+        <div class="pills"><span>PHP 8</span><span>MySQL</span><span>Web Audio API</span><span>HTML5/CSS3</span></div>
+      </div>
+      <div class="row">
+        <a href="http://grocerygenius.infinityfree.io" target="_blank" rel="noopener" class="btn btn-fill">Live demo</a>
+        <a href="https://github.com/Ratul-007/GroceryGenius" target="_blank" rel="noopener" class="btn btn-line">GitHub repo</a>
+      </div>
+    </article>
+    <article class="card proj cut">
+      <div>
+        <span class="tag">LARAVEL WEB APP</span>
+        <h3>Movie Search System 🎬</h3>
+        <p>A Laravel movie search app that uses the OMDb API to fetch real-time details, ratings and plot summaries.</p>
+        <div class="pills"><span>Laravel</span><span>PHP</span><span>OMDb API</span></div>
+      </div>
+      <div class="row"><a href="https://github.com/Ratul-007/Movie-Search-System" target="_blank" rel="noopener" class="btn btn-line">GitHub repo</a></div>
+    </article>
+    <article class="card proj cut">
+      <div>
+        <span class="tag">MACHINE LEARNING</span>
+        <h3>CNN Image Classifier 🧠</h3>
+        <p>A convolutional neural network for image classification, covering the data pipeline and model training.</p>
+        <div class="pills"><span>Python</span><span>TensorFlow/Keras</span><span>OpenCV</span></div>
+      </div>
+      <div class="row"><a href="https://github.com/Ratul-007/CNN-Image-Classifier" target="_blank" rel="noopener" class="btn btn-line">GitHub repo</a></div>
+    </article>
+  </div>
+</div></section>
+
+<section id="what" style="padding-top:0"><div class="wrap">
+  <h2>What I do</h2>
+  <p class="sub">Three areas of work, one developer.</p>
+  <div class="grid g3">
+    <div class="card track cut"><span class="ic">🎮</span><h3>Game development</h3><p>Browser-based 3D games and simulations, from mechanics and resource systems to rendering.</p><ul><li>Three.js</li><li>JavaScript</li><li>3D graphics</li><li>Simulation</li></ul></div>
+    <div class="card track cut"><span class="ic">💻</span><h3>Web &amp; software development</h3><p>Full-stack web apps, WordPress sites and mobile apps, built with modern tooling.</p><ul><li>React</li><li>Vite</li><li>React Native</li><li>Laravel</li><li>WordPress</li></ul></div>
+    <div class="card track cut"><span class="ic">📊</span><h3>Data entry &amp; processing</h3><p>Accurate, fast data work across spreadsheets, PDFs and CRMs. Details below.</p><ul><li>Excel</li><li>Google Sheets</li><li>CRM</li><li>Data cleaning</li></ul></div>
+  </div>
+</div></section>
+
+<section class="dsec"><div class="wrap">
+  <h2>Data services</h2>
+  <p class="sub">Fast, accurate data processing across formats and CRMs, available on Fiverr.</p>
+  <div class="grid g3">
+    <div class="card svc"><span class="ic">📊</span><h3>Excel &amp; Google Sheets entry</h3><p>Data entry, formatting and organizing into spreadsheets of any size.</p><span class="pr">From $5</span></div>
+    <div class="card svc"><span class="ic">📄</span><h3>PDF to Excel or Word</h3><p>Convert scanned or digital PDFs into fully editable files.</p><span class="pr">From $5</span></div>
+    <div class="card svc"><span class="ic">🌐</span><h3>Web research &amp; data collection</h3><p>Collect targeted data from websites into clean, structured sheets.</p><span class="pr">From $10</span></div>
+    <div class="card svc"><span class="ic">🗂️</span><h3>CRM data entry</h3><p>Enter, update and clean records in Salesforce, HubSpot, Zoho and more.</p><span class="pr">From $15</span></div>
+    <div class="card svc"><span class="ic">✍️</span><h3>Copy typing</h3><p>Type handwritten, scanned or image-based documents into digital files.</p><span class="pr">From $5</span></div>
+    <div class="card svc"><span class="ic">🧹</span><h3>Data cleaning</h3><p>Remove duplicates, fix inconsistencies and standardize large datasets.</p><span class="pr">From $10</span></div>
+  </div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <h2>Skills &amp; technologies</h2>
+  <p class="sub">The tools I use across games, web, mobile and data.</p>
+  <div class="sk-g">
+    <div class="card cut"><h3>🎮 Game &amp; 3D</h3><div class="chips"><span>Three.js</span><span>JavaScript</span><span>3D graphics</span><span>Simulation</span></div></div>
+    <div class="card cut"><h3>🌐 Web</h3><div class="chips"><span>React</span><span>Vite</span><span>PHP &amp; Laravel</span><span>WordPress</span><span>MySQL</span><span>HTML5 &amp; CSS3</span></div></div>
+    <div class="card cut"><h3>📱 Mobile</h3><div class="chips"><span>React Native</span></div></div>
+    <div class="card cut"><h3>📊 Data &amp; ML</h3><div class="chips"><span>Python / ML</span><span>Microsoft Excel</span><span>Google Sheets</span><span>Salesforce</span><span>HubSpot</span><span>Data cleaning</span></div></div>
+    <div class="card cut"><h3>🛠️ Tools</h3><div class="chips"><span>Git &amp; GitHub</span><span>Fast typing</span></div></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap split">
+  <div class="cert cut">
+    <span class="m">🏅</span>
+    <h3 class="disp">Professional Data Entry Certification</h3>
+    <p class="org">Issued 29 January 2024, advanced level</p>
+    <div class="kv"><span>Total lessons</span><b>19 lessons</b></div>
+    <div class="kv"><span>Total duration</span><b>12+ hours</b></div>
+    <div class="kv"><span>Instructor</span><b>Md. Shahjalal</b></div>
+    <span class="stamp">✓ Verified &amp; certified</span>
+  </div>
+  <div>
+    <h2>Quality and precision, guaranteed</h2>
+    <div class="why">
+      <div><i>🎓</i><span><h4>Professionally trained</h4><p>Certified in data entry, with structured technical training across modern software tools.</p></span></div>
+      <div><i>⚡</i><span><h4>Fast turnaround</h4><p>Most tasks are done within 24 hours, with rush delivery available.</p></span></div>
+      <div><i>🎯</i><span><h4>Tested and double-checked</h4><p>Every dataset and code commit is checked before delivery.</p></span></div>
+      <div><i>💬</i><span><h4>Direct communication</h4><p>Prompt replies and clear updates from start to finish.</p></span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2>Ready to start a project?</h2>
+  <p>Whether you need a game, a web or mobile app, or precise data processing, let’s build it together.</p>
+  <a href="https://www.fiverr.com/ratul_shelby/buying?source=avatar_menu_profile" class="btn btn-fill" target="_blank" rel="noopener">Hire me on Fiverr</a>
+</div></section>
+
+<footer>© 2026 Ratul Das · Game, Web &amp; Software Developer · contact@ratullab.codes</footer>
+</body>
+</html>
